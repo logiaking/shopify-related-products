@@ -1,0 +1,9 @@
+.related-product-image {    
+  height: 400px;    
+  width: 100%;    
+  background-size: cover;    
+  background-position: center;
+}
+.related-product-price {    
+  color: #000;
+}
