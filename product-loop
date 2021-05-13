@@ -1,0 +1,48 @@
+<!----Products---->
+<div class="page-width" style="margin-bottom:80px;margin-top:30px"> 
+<div class="grid grid--small">   
+
+   <!----Metafield output into variable---->
+   {%assign related_products = article.metafields.related.related_products %}    
+   
+   <!----Check for products---->
+   {%if related_products.size > 0 %}  
+   
+   <!-------->
+   <h3 style="text-align:center;padding-bottom:30px">You might also like</h3> 
+   
+   <!----Loop through each product---->
+   {% for product in article.metafields.related.related_products %}  
+   
+   <!----Get full shop URL and append /products/---->
+   {% assign site_url = shop.url | append: "/products/" %}  
+   
+   <!----Metafields output into variable---->
+   {% assign relate_product_handle = product %} 
+   
+   <!----Append product handle onto previously fetched site URL plus /products/---->
+   {% assign full_url = site_url | append: relate_product_handle %} 
+   
+   <!----Wrap in permalink leading to product page---->
+   <a href = "{{full_url}}">   
+   
+   <!----Output product image, product title, price---->
+     <div class="grid__item medium-up--one-third">            
+       <div class="related-product-image" style="background-image:url('{{all_products[relate_product_handle].featured_image|img_url:'700x700'}}');margin-bottom:20px;"> </div>            
+       <div class="related-product-name" style="text-transform:uppercase">{{all_products[relate_product_handle].title}}</div>            
+       <div class="related-product-price" style="margin-bottom:20px">{{all_products[relate_product_handle].price | money}}</div> 
+       
+       <!----Add to cart with quantity---->
+       <form method="post" action="/cart/add">
+       <input type="hidden" name="id" value="{{ all_products[relate_product_handle].selected_or_first_available_variant.id }}" />
+       <input min="1" type="number" id="quantity" name="quantity" value="1"/>
+       <input type="submit" value="Add to cart" class="btn" />
+       </form>
+     <!---------->
+     </div>    
+   </a>   
+  {% endfor %}
+  {%endif%}
+</div>
+</div>
+<!----/Products----> 
