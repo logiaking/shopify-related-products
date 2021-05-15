@@ -7,5 +7,7 @@ Label: Related Products,
 
 This was set up as a repeatable field that outputs a JSON string e.g - ["product-1", "product-2"] where product is the product handle.
 
+Set up as snippet named "related-products.liquid" and inject with {% render "related-products" %}
+
 
 
