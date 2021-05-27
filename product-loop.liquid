@@ -3,10 +3,10 @@
 <div class="grid grid--small">   
 
    <!--Metafield output into variable-->
-   {%assign related_products = article.metafields.related.related_products %}    
+   {% assign related_products = article.metafields.related.related_products %}    
    
    <!--Check for products-->
-   {%if related_products.size > 0 %}  
+   {% if related_products.size > 0 %}  
    
    <!---->
    <h3 style="text-align:center;padding-bottom:30px">You might also like</h3> 
